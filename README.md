@@ -1,5 +1,5 @@
 # # Análisis de Webstory basada en datos – BBC
-(image-2.png)
+![alt text](image.png)
 ##  "Gaza war in maps and satellite images"
 **Nombre:**  – BBC News - Visual Journalism team - 13 October 2025
 **URL:** https://www.bbc.co.uk/news/resources/idt-217c6a28-4a90-4d47-a91c-13113a7dc7db
