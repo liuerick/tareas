@@ -1,0 +1,145 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "toc_visible": true,
+      "authorship_tag": "ABX9TyMl8o6JvfdE87Q3u/6Lgmen",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/liuerick/tarea1/blob/main/tarea%202.1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Y4g3NwLLWmgw",
+        "outputId": "25edc74a-2e25-42fc-909f-6a9e0681b31f"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "range(-30, 50)\n",
+            "-30 Muy frio\n",
+            "-29 Muy frio\n",
+            "-28 Muy frio\n",
+            "-27 Muy frio\n",
+            "-26 Muy frio\n",
+            "-25 Muy frio\n",
+            "-24 Muy frio\n",
+            "-23 Muy frio\n",
+            "-22 Muy frio\n",
+            "-21 Muy frio\n",
+            "-20 Muy frio\n",
+            "-19 Muy frio\n",
+            "-18 Muy frio\n",
+            "-17 Muy frio\n",
+            "-16 Muy frio\n",
+            "-15 Muy frio\n",
+            "-14 Muy frio\n",
+            "-13 Muy frio\n",
+            "-12 Muy frio\n",
+            "-11 Muy frio\n",
+            "-10 Muy frio\n",
+            "-9 Muy frio\n",
+            "-8 Muy frio\n",
+            "-7 Muy frio\n",
+            "-6 Muy frio\n",
+            "-5 Muy frio\n",
+            "-4 Muy frio\n",
+            "-3 Muy frio\n",
+            "-2 Muy frio\n",
+            "-1 Muy frio\n",
+            "0 Templado\n",
+            "1 Templado\n",
+            "2 Templado\n",
+            "3 Templado\n",
+            "4 Templado\n",
+            "5 Templado\n",
+            "6 Templado\n",
+            "7 Templado\n",
+            "8 Templado\n",
+            "9 Templado\n",
+            "10 Templado\n",
+            "11 Templado\n",
+            "12 Templado\n",
+            "13 Templado\n",
+            "14 Templado\n",
+            "15 Templado\n",
+            "16 Templado\n",
+            "17 Templado\n",
+            "18 Templado\n",
+            "19 Templado\n",
+            "20 Templado\n",
+            "21 Templado\n",
+            "22 Templado\n",
+            "23 Templado\n",
+            "24 Templado\n",
+            "25 Caluroso\n",
+            "26 Caluroso\n",
+            "27 Caluroso\n",
+            "28 Caluroso\n",
+            "29 Caluroso\n",
+            "30 Caluroso\n",
+            "31 Caluroso\n",
+            "32 Caluroso\n",
+            "33 Caluroso\n",
+            "34 Caluroso\n",
+            "35 Caluroso\n",
+            "36 Caluroso\n",
+            "37 Caluroso\n",
+            "38 Caluroso\n",
+            "39 Caluroso\n",
+            "40 Caluroso\n",
+            "41 Caluroso\n",
+            "42 Caluroso\n",
+            "43 Caluroso\n",
+            "44 Caluroso\n",
+            "45 Caluroso\n",
+            "46 Caluroso\n",
+            "47 Caluroso\n",
+            "48 Caluroso\n",
+            "49 Caluroso\n",
+            "50 Caluroso\n"
+          ]
+        }
+      ],
+      "source": [
+        "# lista desde el -30 al 50\n",
+        "lista_numeros = range (-30, 50)\n",
+        "print(lista_numeros)\n",
+        "\n",
+        "for x in range(-30,51):\n",
+        "  if(x < 0):\n",
+        "    print(x, \"Muy frio\")\n",
+        "  elif(x >= 0 and x <= 24):\n",
+        "    print(x, \"Templado\")\n",
+        "  else:\n",
+        "    print(x, \"Caluroso\")"
+      ]
+    }
+  ]
+}
