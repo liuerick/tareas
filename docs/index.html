@@ -1,2 +1,809 @@
-# hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Resumen del proyecto ANÚLEMELO, una investigación sobre los votos nulos y blancos en las elecciones presidenciales chilenas entre 1989 y 2025."
+  >
+
+  <title>ANÚLEMELO | Resumen del proyecto</title>
+
+  <style>
+    :root {
+      --fondo: #f4f1ea;
+      --blanco: #ffffff;
+      --negro: #191919;
+      --gris: #626262;
+      --gris-claro: #e6e2d9;
+      --amarillo: #f1d34a;
+      --amarillo-oscuro: #9e8300;
+      --ancho-maximo: 1100px;
+      --radio: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--fondo);
+      color: var(--negro);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contenedor {
+      width: min(92%, var(--ancho-maximo));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: rgba(244, 241, 234, 0.96);
+      border-bottom: 1px solid var(--gris-claro);
+    }
+
+    .barra-navegacion {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .logo::before {
+      content: "";
+      width: 34px;
+      height: 10px;
+      display: block;
+      background-color: var(--amarillo);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      color: var(--gris);
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--negro);
+    }
+
+    .portada {
+      min-height: 82vh;
+      padding: 90px 0 70px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      align-items: end;
+      gap: 50px;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 7px 13px;
+      background-color: var(--amarillo);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: clamp(4rem, 11vw, 8.5rem);
+      line-height: 0.86;
+      letter-spacing: -0.07em;
+    }
+
+    .bajada {
+      max-width: 760px;
+      color: var(--gris);
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+    }
+
+    .dato-principal {
+      padding: 30px;
+      background-color: var(--blanco);
+      border: 1px solid var(--gris-claro);
+      border-radius: var(--radio);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
+    }
+
+    .dato-principal span {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--gris);
+      font-size: 0.78rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .dato-principal strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1;
+    }
+
+    .dato-principal p {
+      color: var(--gris);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 75px 0;
+      border-top: 1px solid var(--gris-claro);
+    }
+
+    .encabezado-seccion {
+      display: grid;
+      grid-template-columns: 0.3fr 1fr;
+      gap: 40px;
+      margin-bottom: 42px;
+    }
+
+    .numero-seccion {
+      color: var(--amarillo-oscuro);
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: clamp(2.1rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .introduccion-seccion {
+      max-width: 820px;
+      color: var(--gris);
+      font-size: 1.15rem;
+    }
+
+    .frase-destacada {
+      padding: 44px;
+      background-color: var(--negro);
+      color: var(--blanco);
+      border-radius: var(--radio);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .frase-destacada mark {
+      padding: 0 5px;
+      background-color: var(--amarillo);
+      color: var(--negro);
+    }
+
+    .grilla {
+      display: grid;
+      gap: 22px;
+    }
+
+    .grilla-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grilla-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tarjeta {
+      padding: 28px;
+      background-color: var(--blanco);
+      border: 1px solid var(--gris-claro);
+      border-radius: var(--radio);
+    }
+
+    .tarjeta h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .tarjeta p,
+    .tarjeta li {
+      color: var(--gris);
+    }
+
+    .tarjeta ul {
+      padding-left: 20px;
+    }
+
+    .hallazgo {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+    }
+
+    .numero-hallazgo {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      background-color: var(--amarillo);
+      border-radius: 50%;
+      font-weight: 900;
+    }
+
+    .advertencia {
+      margin-top: 28px;
+      padding: 20px 22px;
+      background-color: var(--gris-claro);
+      border-left: 5px solid var(--amarillo);
+      color: var(--gris);
+    }
+
+    .linea-tiempo {
+      margin-top: 35px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .hito {
+      padding-top: 14px;
+      border-top: 5px solid var(--amarillo);
+    }
+
+    .hito strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+
+    .hito p {
+      color: var(--gris);
+      font-size: 0.92rem;
+    }
+
+    .fuentes {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .fuentes li {
+      padding: 17px 20px;
+      background-color: var(--blanco);
+      border: 1px solid var(--gris-claro);
+      border-radius: 12px;
+    }
+
+    .cierre {
+      text-align: center;
+    }
+
+    .cierre h2 {
+      max-width: 900px;
+      margin: 0 auto 25px;
+    }
+
+    .cierre p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--gris);
+      font-size: 1.15rem;
+    }
+
+    footer {
+      padding: 30px 0 45px;
+      border-top: 1px solid var(--gris-claro);
+      color: var(--gris);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 850px) {
+      .portada,
+      .encabezado-seccion,
+      .grilla-2,
+      .grilla-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .linea-tiempo {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        display: none;
+      }
+
+      .portada {
+        min-height: auto;
+        padding-top: 65px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      h1 {
+        font-size: 3.7rem;
+      }
+
+      .linea-tiempo {
+        grid-template-columns: 1fr;
+      }
+
+      .frase-destacada {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="contenedor barra-navegacion">
+
+      <a href="#inicio" class="logo">
+        ANÚLEMELO
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="#proyecto">Proyecto</a></li>
+          <li><a href="#hipotesis">Hipótesis</a></li>
+          <li><a href="#hallazgos">Hallazgos</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
+          <li><a href="#fuentes">Fuentes</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <div class="contenedor portada">
+
+      <div>
+        <span class="etiqueta">
+          Narración gráfica de no ficción
+        </span>
+
+        <h1>ANÚLEMELO</h1>
+
+        <p class="bajada">
+          Una investigación sobre la evolución de los votos nulos y
+          blancos en las elecciones presidenciales chilenas entre
+          1989 y 2025.
+        </p>
+      </div>
+
+      <aside class="dato-principal">
+        <span>Segunda vuelta presidencial de 2025</span>
+
+        <strong>5,8%</strong>
+
+        <p>
+          Porcentaje aproximado de votos nulos registrado en la
+          segunda vuelta de la elección presidencial.
+        </p>
+      </aside>
+
+    </div>
+
+    <section id="proyecto">
+
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+
+          <div class="numero-seccion">
+            01 — PROYECTO
+          </div>
+
+          <div>
+            <h2>
+              Un voto que no elige presidente, pero sí puede decir algo.
+            </h2>
+
+            <p class="introduccion-seccion">
+              ANÚLEMELO analiza cómo han cambiado los votos nulos y
+              blancos en Chile, cómo se distribuyen territorialmente
+              y qué relación pueden tener con la oferta electoral,
+              la polarización política y las reglas de participación.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="frase-destacada">
+          En Chile hay una candidatura que no hace campaña, no va a
+          debates y no promete cambios, pero aparece en todas las
+          elecciones: <mark>el voto nulo</mark>.
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="hipotesis">
+
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+
+          <div class="numero-seccion">
+            02 — HIPÓTESIS
+          </div>
+
+          <div>
+            <h2>
+              La distancia entre la ciudadanía y la oferta política.
+            </h2>
+
+            <p class="introduccion-seccion">
+              La hipótesis general plantea que el voto nulo y blanco
+              puede reflejar una falta de identificación con las
+              candidaturas disponibles.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="grilla grilla-3">
+
+          <article class="tarjeta">
+            <h3>Voto obligatorio</h3>
+
+            <p>
+              El malestar que antes podía expresarse mediante la
+              abstención entra ahora a la urna y se vuelve medible.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Segunda vuelta</h3>
+
+            <p>
+              La oferta electoral se reduce a dos candidaturas,
+              dejando menos espacio para opciones intermedias.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Polarización</h3>
+
+            <p>
+              Una mayor distancia ideológica entre candidaturas puede
+              aumentar la tensión entre participación y representación.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="advertencia">
+          Estas variables permiten observar tendencias y coincidencias,
+          pero no demuestran por sí solas una relación causal.
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="hallazgos">
+
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+
+          <div class="numero-seccion">
+            03 — HALLAZGOS
+          </div>
+
+          <div>
+            <h2>
+              El voto nulo no sigue una trayectoria constante.
+            </h2>
+
+            <p class="introduccion-seccion">
+              La serie histórica presenta momentos de estabilidad,
+              descensos y aumentos marcados. La cantidad de candidaturas,
+              por sí sola, no explica el fenómeno.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="grilla grilla-2">
+
+          <article class="tarjeta hallazgo">
+
+            <div class="numero-hallazgo">
+              1
+            </div>
+
+            <div>
+              <h3>1993</h3>
+
+              <p>
+                El voto nulo alcanza aproximadamente un 3,7% en
+                primera vuelta.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="tarjeta hallazgo">
+
+            <div class="numero-hallazgo">
+              2
+            </div>
+
+            <div>
+              <h3>1999</h3>
+
+              <p>
+                El porcentaje disminuye, pese a que nuevamente
+                participaron seis candidaturas.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="tarjeta hallazgo">
+
+            <div class="numero-hallazgo">
+              3
+            </div>
+
+            <div>
+              <h3>2017 y 2021</h3>
+
+              <p>
+                Los votos nulos se ubican bajo el 1% en primera vuelta.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="tarjeta hallazgo">
+
+            <div class="numero-hallazgo">
+              4
+            </div>
+
+            <div>
+              <h3>2025</h3>
+
+              <p>
+                El voto nulo sube a cerca de 2,7% en primera vuelta
+                y alcanza casi 6% en segunda vuelta.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+        <div class="linea-tiempo">
+
+          <div class="hito">
+            <strong>1989</strong>
+
+            <p>
+              Retorno a las elecciones presidenciales democráticas.
+            </p>
+          </div>
+
+          <div class="hito">
+            <strong>1993</strong>
+
+            <p>
+              Uno de los primeros puntos altos de votos nulos.
+            </p>
+          </div>
+
+          <div class="hito">
+            <strong>2017</strong>
+
+            <p>
+              Descenso marcado del voto nulo en primera vuelta.
+            </p>
+          </div>
+
+          <div class="hito">
+            <strong>2021</strong>
+
+            <p>
+              Alta polarización en la segunda vuelta presidencial.
+            </p>
+          </div>
+
+          <div class="hito">
+            <strong>2025</strong>
+
+            <p>
+              Fuerte aumento de votos nulos, especialmente en segunda vuelta.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="metodologia">
+
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+
+          <div class="numero-seccion">
+            04 — METODOLOGÍA
+          </div>
+
+          <div>
+            <h2>
+              Datos electorales, contexto histórico y visualización.
+            </h2>
+
+            <p class="introduccion-seccion">
+              El proyecto combina resultados presidenciales,
+              características de las candidaturas, un índice de
+              polarización y datos regionales.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="grilla grilla-3">
+
+          <article class="tarjeta">
+            <h3>Bases de datos</h3>
+
+            <ul>
+              <li>Resultados por candidato y elección.</li>
+              <li>Votos nulos y blancos.</li>
+              <li>Información regional.</li>
+              <li>Partido, coalición e ideología.</li>
+            </ul>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Procesamiento</h3>
+
+            <ul>
+              <li>Limpieza de nombres y categorías.</li>
+              <li>Cálculo de porcentajes.</li>
+              <li>Separación de vueltas.</li>
+              <li>Corrección de datos duplicados.</li>
+            </ul>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Herramientas</h3>
+
+            <ul>
+              <li>Python.</li>
+              <li>Pandas.</li>
+              <li>Altair.</li>
+              <li>Google Colab.</li>
+              <li>GitHub.</li>
+            </ul>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="fuentes">
+
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+
+          <div class="numero-seccion">
+            05 — FUENTES
+          </div>
+
+          <div>
+            <h2>
+              Registros oficiales y bases históricas.
+            </h2>
+
+            <p class="introduccion-seccion">
+              La investigación utiliza principalmente fuentes
+              electorales oficiales y registros históricos de
+              acceso público.
+            </p>
+          </div>
+
+        </div>
+
+        <ul class="fuentes">
+          <li>
+            Servicio Electoral de Chile — SERVEL
+          </li>
+
+          <li>
+            Tribunal Calificador de Elecciones — TRICEL
+          </li>
+
+          <li>
+            Biblioteca del Congreso Nacional de Chile — BCN
+          </li>
+
+          <li>
+            Ministerio del Interior — registros históricos de 1989 a 1999
+          </li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <section class="cierre">
+
+      <div class="contenedor">
+
+        <h2>
+          El voto nulo no tiene un solo significado.
+        </h2>
+
+        <p>
+          Puede representar error, protesta, desinterés o rechazo.
+          Pero cuando aumenta, cambia entre vueltas o se concentra
+          en ciertos territorios, deja de ser una cifra secundaria.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="contenedor">
+      Proyecto académico sobre elecciones presidenciales chilenas,
+      votos nulos y votos blancos.
+    </div>
+
+  </footer>
+
+</body>
+</html>
 
